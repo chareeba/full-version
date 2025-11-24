@@ -11,7 +11,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+         $title = "All orders";
+        $description = "List of orders";
+        return view('admin.order.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +21,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
