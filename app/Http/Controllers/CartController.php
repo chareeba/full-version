@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\Cart;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -11,7 +11,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+
+        return view('admin.cart.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +20,8 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.cart.create', compact('title', 'description'));
     }
 
     /**
@@ -55,9 +57,11 @@ class CartController extends Controller
      */
     public function edit(string $id)
     {
+
+
         $Cart=Cart::where('id',$id)->firstorFail();
          if($Cart){
-            return response()->json($Cart);
+        return view('admin.cart.edit', compact('title', 'description','Cart'));
         }
         else{
             return response()->json(['message'=>'cart not found'],404);
