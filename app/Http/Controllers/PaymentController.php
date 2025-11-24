@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\Payment;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -11,7 +11,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $title = "All payments";
+        $description = "List of payments";
+        return view('admin.payment.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +21,9 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+         $title = "All payments";
+        $description = "List of payments";
+        return view('admin.payment.create', compact('title', 'description'));
     }
 
     /**
@@ -57,9 +61,11 @@ class PaymentController extends Controller
      */
     public function edit(string $id)
     {
+         $title = "All payments";
+        $description = "List of payments";
           $Payment=Payment::where('id',$id)->firstorFail();
          if($Payment){
-            return response()->json($Payment);
+        return view('admin.payment.edit', compact('title', 'description','Payment'));
         }
         else{
             return response()->json(['message'=>'Payment not found'],404);
