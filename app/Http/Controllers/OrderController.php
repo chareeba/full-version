@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\Order;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -21,7 +21,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        
+         $title = "All orders";
+        $description = "List of orders";
+        return view('admin.order.create', compact('title', 'description'));
     }
 
     /**
@@ -62,9 +64,11 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
+         $title = "All orders";
+        $description = "List of orders";
          $Order=Order::where('id',$id)->firstorFail();
          if($Order){
-            return response()->json($Order);
+        return view('admin.order.edit', compact('title', 'description','Order'));
         }
         else{
             return response()->json(['message'=>'order not found'],404);
