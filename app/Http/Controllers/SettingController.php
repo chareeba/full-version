@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\Setting;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -11,7 +11,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+         $title = "All settings";
+        $description = "List of settings";
+        return view('admin.setting.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +21,9 @@ class SettingController extends Controller
      */
     public function create()
     {
-        //
+        $title = "All settings";
+        $description = "List of settings";
+        return view('admin.setting.create', compact('title', 'description'));
     }
 
     /**
@@ -54,9 +58,11 @@ class SettingController extends Controller
      */
     public function edit(string $id)
     {
+        $title = "All settings";
+        $description = "List of settings";
            $Setting=Setting::where('id',$id)->firstorFail();
          if($Setting){
-            return response()->json($Setting);
+        return view('admin.setting.edit', compact('title', 'description','Setting'));
         }
         else{
             return response()->json(['message'=>'setting not found'],404);
