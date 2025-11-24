@@ -27,7 +27,7 @@ function get_status_meta( $status_key = '' ) {
     }
 
     if ( in_array( $status_key, array_keys( $metas ) ) ) {
-        return $metas[ $status_key ];
+        // return $metas[ $status_key ];
     }
 
     return [];
