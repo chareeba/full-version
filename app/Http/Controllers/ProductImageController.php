@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\ProductImage;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 
 class ProductImageController extends Controller
@@ -11,7 +11,9 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        //
+         $title = "All Productimages";
+        $description = "List of productimages";
+        return view('admin.productimage.index', compact('title', 'description'));
     }
 
     /**
@@ -19,8 +21,11 @@ class ProductImageController extends Controller
      */
     public function create()
     {
-        //
+         $title = "All Productimages";
+        $description = "List of productimages";
+        return view('admin.productimage.create', compact('title', 'description'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -54,9 +59,11 @@ class ProductImageController extends Controller
      */
     public function edit(string $id)
     {
+         $title = "All Productimages";
+        $description = "List of productimages";
            $ProductImage=ProductImage::where('id',$id)->firstorFail();
          if($ProductImage){
-            return response()->json($ProductImage);
+        return view('admin.productimage.edit', compact('title', 'description','ProductTimage'));
         }
         else{
             return response()->json(['message'=>'ProductImage not found'],404);
