@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\models\Coupon;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -11,7 +10,10 @@ class CouponController extends Controller
      */
     public function index()
     {
-        //
+
+         $title = "coupons";
+        $description = "List of coupons";
+        return view('admin.coupon.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +21,10 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+
+        $title = "coupons";
+        $description = "List of coupons";
+        return view('admin.coupon.create', compact('title', 'description'));
     }
 
     /**
@@ -59,9 +64,11 @@ class CouponController extends Controller
      */
     public function edit(string $id)
     {
+        $title = "coupons";
+        $description = "List of coupons";
          $Coupon=Coupon::where('id',$id)->firstorFail();
          if($Coupon){
-            return response()->json($Coupon);
+        return view('admin.coupon.edit', compact('title', 'description','Coupon'));
         }
         else{
             return response()->json(['message'=>'coupon not found'],404);
