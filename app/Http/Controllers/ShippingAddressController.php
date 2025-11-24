@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\ShippingAddress;
+use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 
 class ShippingAddressController extends Controller
@@ -11,7 +11,9 @@ class ShippingAddressController extends Controller
      */
     public function index()
     {
-        //
+        $title = "All shippingaddress";
+        $description = "List of shippingadress";
+        return view('admin.shippingadress.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +21,9 @@ class ShippingAddressController extends Controller
      */
     public function create()
     {
-        //
+       $title = "All shippingaddress";
+        $description = "List of shippingadress";
+        return view('admin.shippingadress.create', compact('title', 'description'));
     }
 
     /**
@@ -62,9 +66,11 @@ class ShippingAddressController extends Controller
      */
     public function edit(string $id)
     {
+        $title = "All shippingaddress";
+        $description = "List of shippingadress";
          $ShippingAddress=ShippingAddress::where('id',$id)->firstorFail();
          if($ShippingAddress){
-            return response()->json($ShippingAddress);
+        return view('admin.shippingadress.edit', compact('title', 'description','ShippingAddress'));
         }
         else{
             return response()->json(['message'=>'shippingAddress not found'],404);
