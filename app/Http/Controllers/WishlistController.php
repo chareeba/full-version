@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\Wishlist;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
 class WishListController extends Controller
@@ -11,7 +11,9 @@ class WishListController extends Controller
      */
     public function index()
     {
-        //
+         $title = "Wishlists";
+        $description = "List of wishlists";
+        return view('admin.shippingadress.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +21,9 @@ class WishListController extends Controller
      */
     public function create()
     {
-        //
+         $title = "Wishlists";
+        $description = "List of wishlists";
+        return view('admin.shippingadress.create', compact('title', 'description'));
     }
 
     /**
@@ -54,9 +58,11 @@ class WishListController extends Controller
      */
     public function edit(string $id)
     {
+         $title = "Wishlists";
+        $description = "List of wishlists";
            $WishList=WishList::where('id',$id)->firstorFail();
          if($WishList){
-            return response()->json($WishList);
+        return view('admin.shippingadress.index', compact('title', 'description','WishList'));
         }
         else{
             return response()->json(['message'=>'WishList not found'],404);
