@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\SubCategory;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -11,7 +11,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Subcategories";
+        $description = "List of subcategories";
+        return view('admin.shippingadress.index', compact('title', 'description'));
     }
 
     /**
@@ -19,7 +21,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+         $title = "Subcategories";
+        $description = "List of subcategories";
+        return view('admin.shippingadress.create', compact('title', 'description'));
     }
 
     /**
@@ -58,9 +62,11 @@ class SubCategoryController extends Controller
      */
     public function edit(string $slug)
     {
+         $title = "Subcategories";
+        $description = "List of subcategories";
          $SubCategory=SubCategory::where('slug',$slug)->firstorFail();
          if($SubCategory){
-            return response()->json($SubCategory);
+        return view('admin.shippingadress.edit', compact('title', 'description','SubCategory'));
         }
         else{
             return response()->json(['message'=>'subcategory not found'],404);
