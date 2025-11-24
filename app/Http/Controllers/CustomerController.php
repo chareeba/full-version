@@ -24,6 +24,7 @@ class CustomerController extends Controller
         $offset   = ( $page * $per_page ) - $per_page;
 
         $customers   = Customer::orderBy('id', 'DESC')->paginate( $per_page );
+    
         $title       = "Customer List";
         $description = "Some description for the page";
 
