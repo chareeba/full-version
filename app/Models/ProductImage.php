@@ -9,13 +9,19 @@ class ProductImage extends Model
 {
     use HasFactory;
     protected $fillable = [
-    'product_id',
-    'image_path',
-    'alt_text',
-];
-protected $casts = [
-    'product_id' => 'integer',
-    'image_path' => 'string',
-    'alt_text'   => 'string',
-];
+        'product_id',
+        'image_path',
+        'alt_text',
+    ];
+    protected $casts = [
+        'product_id' => 'integer',
+        'image_path' => 'string',
+        'alt_text' => 'string',
+    ];
+
+    // Relationships
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
