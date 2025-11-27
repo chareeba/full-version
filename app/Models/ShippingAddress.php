@@ -35,4 +35,17 @@ class ShippingAddress extends Model
         'is_default' => 'boolean',   // true/false for default address
     ];
 
+    // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'shipping_address_id');
+    }
+
 }
+
+
