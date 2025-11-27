@@ -25,4 +25,11 @@ class ProductVariant extends Model
         'stock' => 'integer',
     ];
 
+    // Relationships
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
 }
+
