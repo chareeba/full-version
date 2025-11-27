@@ -28,4 +28,12 @@ protected $casts = [
     'max_uses'         => 'integer',
     'status'           => 'boolean',     // active / inactive
 ];
+
+    // Relationships
+    public function orders()
+    {
+        // If you add a `coupon_id` on orders, this will return related orders
+        return $this->hasMany(Order::class, 'coupon_id');
+    }
+
 }
