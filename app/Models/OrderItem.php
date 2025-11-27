@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItem extends Model
 {
     use HasFactory;
-     protected $fillable = [
+    protected $fillable = [
         'order_id',
         'product_id',
         'variant_id',
@@ -16,12 +16,28 @@ class OrderItem extends Model
         'price',
         'subtotal',
     ];
+
+    // Relationships
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function variant()
+    {
+        return $this->belongsTo(ProductVariant::class, 'variant_id');
+    }
     protected $casts = [
-    'order_id'   => 'integer',
-    'product_id' => 'integer',
-    'variant_id' => 'integer',
-    'quantity'   => 'integer',
-    'price'      => 'decimal:2',
-    'subtotal'   => 'decimal:2',
-];
+        'order_id' => 'integer',
+        'product_id' => 'integer',
+        'variant_id' => 'integer',
+        'quantity' => 'integer',
+        'price' => 'decimal:2',
+        'subtotal' => 'decimal:2',
+    ];
 }
