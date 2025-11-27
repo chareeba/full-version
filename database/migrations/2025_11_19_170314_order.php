@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('shipping_cost');
             $table->string('payment_status')->default("pending");
             $table->string('order_status')->default("pending");
-            $table->integer('shipping_address_id');
+            $table->unsignedBigInteger('shipping_address_id')->nullable();
             $table->string('payment_method')->nullable();
             $table->timestamps();
         });
