@@ -10,14 +10,24 @@ class Cart extends Model
     use HasFactory;
 
     protected $fillable = [
-    'user_id',
-    'session_id', // For guest users
-    'total',
-];
+        'user_id',
+        'session_id', // For guest users
+        'total',
+    ];
 
-protected $casts = [
-    'user_id'   => 'integer',
-    'session_id'=> 'string',   // Guest session token / ID
-    'total'     => 'decimal:2' // Money value
-];
+    protected $casts = [
+        'user_id' => 'integer',
+        'session_id' => 'string',   // Guest session token / ID
+        'total' => 'decimal:2' // Money value
+    ];
+    // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(CartItem::class);
+    }
 }
