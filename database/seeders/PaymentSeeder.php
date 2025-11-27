@@ -13,11 +13,12 @@ class PaymentSeeder extends Seeder
         // payment_method: 1=stripe, 2=paypal, 3=cod
         // status: 1=success, 0=failure
         $payments = [];
-        for ($i = 1; $i <= 10; $i++) {
+        // Only create payments for orders that exist (we seed 5 orders in OrderSeeder)
+        for ($i = 1; $i <= 5; $i++) {
             $payments[] = [
                 'order_id' => $i,
                 'payment_method' => ($i % 3) + 1,
-                'trasaction_id' => $i, // just use $i for unique int
+                'trasaction_id' => $i,
                 'amount' => 100 + $i * 10,
                 'status' => ($i % 2),
                 'created_at' => $now,
